@@ -1,0 +1,68 @@
+<html lang="en">
+  <head>
+    {% include 'fiesta_ui_meta.jinja2' %}
+    <title>Chocolate Fiesta</title>
+    {% include 'fiesta_ui_css.jinja2' %}
+    {% include 'fiesta_ui_header_scripts.jinja2' %}
+  </head>
+
+  <body class="text-center">
+    <div id="app" class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <head class="masthead">
+        <div class="masthead row justify-content-center align-items-center">
+          <div class="col-6">
+            <h3 class="masthead-brand">Chocolate Fiesta</h3>
+          </div>
+          <div class="col-2">
+            <p class="masthead-p">Melting</p>
+          </div>
+          <div class="col-3">
+            <p class="masthead-p">
+              <span v-if="printer_status" class="badge badge-pill badge-success">Connected</span>
+              <span v-else class="badge badge-pill badge-danger">Disconnected</span>
+          </p>
+          </div>
+        </div>
+        
+      </head>
+
+      <nav class="nav nav-masthead justify-content-center">
+            <a @click="homeBtn" class="nav-link active" href="#">🏠 Home</a>
+            <a class="nav-link" href="/?fiesta=0">🅰️ Advanced</a>
+            <a @click="tutorialBtn" class="nav-link" href="#">📙 Tutorial</a>
+            <a @click="settingsBtn" class="nav-link" href="#">⚙️ Settings</a>
+      </nav>
+
+      <main role="main" class="inner cover">
+
+        <div v-if="current_active === 'start'">
+          <ol class="list">
+            <li>Check if chocolate 🍫 is loaded and well melted</li>
+            <li>Choose a model from Model Library or upload</li>
+          </ol>
+          <p class="lead">
+            <a @click="modelLibraryBtn" href="#" class="btn btn-lg btn-secondary">Model Library</a>
+            <a @click="drawToPrintBtn" href="#" class="btn btn-lg btn-secondary">Draw-to-print</a>
+          </p>
+        </div>
+
+        <div v-else-if="current_active === 'model_library'">
+          Model Library
+        </div>
+        <div v-else-if="current_active === 'draw_to_print'">
+          Draw-to-print
+        </div>
+
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>Chocolate Fiesta</p>
+        </div>
+      </footer>
+
+    </div>
+
+  {% include 'fiesta_ui_footer_scripts.jinja2' %}
+  </body>
+</html>

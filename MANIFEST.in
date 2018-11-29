@@ -1,0 +1,4 @@
+include README.md
+recursive-include octoprint_fiesta_ui/templates *
+recursive-include octoprint_fiesta_ui/translations *
+recursive-include octoprint_fiesta_ui/static *
